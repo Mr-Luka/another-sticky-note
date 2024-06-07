@@ -10,3 +10,5 @@ const Header = ()=> {
       </aside>
     </header>
 }
+
+export default Header;
