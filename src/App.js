@@ -1,11 +1,11 @@
 import React from "react";
+import Header from "./Header.js"
+import NotesList from "./NotesList.js";
 
 const App = () => (
   <div>
-
-    <ul className="notes-list">
-
-    </ul>
+    <Header />
+    <NotesList />
   </div>
 );
 
