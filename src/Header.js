@@ -2,7 +2,9 @@ import React from "react";
 
 
 const Header = (props)=> {
-
+    const callSearch = (e)=> {
+        props.onSearch(e.target.value)
+    }
 
     return (
         <header className="app-header">
@@ -14,6 +16,7 @@ const Header = (props)=> {
             type="text" 
             placeholder="Type here to search..." 
             value={props.searchText}
+            onChange= {callSearch}
             />
       </aside>
     </header>

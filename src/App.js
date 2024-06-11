@@ -10,7 +10,7 @@ class App extends Component {
          description: "",
          doesMatchSearch: true,
          }],
-    searchText: "Search for me"
+    searchText: ""
     }
 
     addNote = () => {
@@ -52,7 +52,7 @@ class App extends Component {
                 const description = note.description.toLowerCase();
                 const titleMatch = title.includes(newSearchText);
                 const descriptionMatch = description.includes(newSearchText);
-                const doesMatch = titleMatch || descriptionMatch;
+                const hasMatch = titleMatch || descriptionMatch;
                 note.doesMatchSearch = hasMatch;
                 return note;
             }
@@ -63,7 +63,7 @@ class App extends Component {
     render(){
         return (
          <div>
-          <Header searchText={this.state.searchText} addNote={this.addNote} />
+          <Header searchText={this.state.searchText} addNote={this.addNote} onSearch={this.onSearch} />
            <NotesList notes={this.state.notes} onType={this.onType}/>
          </div>
         )
