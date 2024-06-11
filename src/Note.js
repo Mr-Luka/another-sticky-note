@@ -7,7 +7,11 @@ const Note = props => {
         const editMeId = props.note.id;
         props.onType(editMeId, "title", updatedTitle)
     } 
-
+    const updatedDescription = e =>{
+        const updatedTitle = e.target.value;
+        const editMeId = props.note.id;
+        props.onType(editMeId, "description", updatedTitle);
+    }
 
 
     return(
@@ -22,7 +26,7 @@ const Note = props => {
             className="note__description" 
             placeholder="Description..."
             value={props.note.description}
-             />
+            onChange={updatedDescription} />
         <span className="note__delete">X</span>
       </li>
 )
