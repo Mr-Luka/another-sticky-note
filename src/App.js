@@ -65,6 +65,11 @@ class App extends Component {
         this.setState({notes: updatedNotes});
     }
 
+    componentDidUpdate(){
+        const stringifiedNotes = JSON.stringify(this.state.notes);
+        localStorage.setItem("savedNotes", stringifiedNotes);
+    }
+
     render(){
         return (
          <div>
