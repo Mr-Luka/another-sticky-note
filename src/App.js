@@ -60,11 +60,16 @@ class App extends Component {
         this.setState({notes:updatedNotes, searchText: newSearchText})
     }
 
+    removeNote = noteId => {
+        const updatedNotes = this.state.notes.filter(note=> note.id !== noteId);
+        this.setState({notes: updatedNotes});
+    }
+
     render(){
         return (
          <div>
           <Header searchText={this.state.searchText} addNote={this.addNote} onSearch={this.onSearch} />
-           <NotesList notes={this.state.notes} onType={this.onType}/>
+           <NotesList notes={this.state.notes} onType={this.onType} removeNote={this.removeNote}/>
          </div>
         )
     }
