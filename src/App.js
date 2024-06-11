@@ -23,6 +23,11 @@ class App extends Component {
         const newNotes = [newNote, ...this.state.notes];
         this.setState({notes: newNotes});
     }
+
+    onType ()=> {
+
+    }
+    
     render(){
         return (
          <div>
