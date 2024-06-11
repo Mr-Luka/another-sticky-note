@@ -65,17 +65,22 @@ class App extends Component {
         this.setState({notes: updatedNotes});
     }
 
-    componentDidUpdate(){
-        const stringifiedNotes = JSON.stringify(this.state.notes);
-        localStorage.setItem("savedNotes", stringifiedNotes);
+    componentDidUpdate() {
+    /* after each render, save notes data to local storage */
+    const stringifiedNotes = JSON.stringify(this.state.notes);
+    localStorage.setItem("savedNotes", stringifiedNotes);
+  }
+
+  componentDidMount() {
+    /* after rendering for the first time, read saved
+    notes data from local storage and pass that data
+    to component state if it exists */
+    const stringifiedNotes = localStorage.getItem("savedNotes");
+    if (stringifiedNotes) {
+      const savedNotes = JSON.parse(stringifiedNotes);
+      this.setState({ notes: savedNotes });
     }
-    componendDidMount(){
-        const stringifiedNotes = localStorage.getItem("savedNotes");
-        if (stringifiedNotes) {
-            const savedNotes = JSON.parse(stringifiedNotes);
-            this.setState({notes: savedNotes})
-        }
-    }
+  }
 
     render(){
         return (
