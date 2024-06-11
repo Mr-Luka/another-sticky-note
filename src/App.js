@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import Header from "./Header.js"
 import NotesList from "./NotesList.js";
-
+/* This container component manages all of the state 
+for this application, delegating rendering logic to 
+presentational components. */
 class App extends Component {
     state = {
         notes: [{
@@ -25,6 +27,9 @@ class App extends Component {
     }
 
     onType = (editMeId, updatedKey, updatedValue)=> {
+    // editMeId == id of the note that is edited
+    // updatedKey == title or description field
+    // updatedValue == value of title or description
         const updatedNotes = this.state.notes.map(note=>{
             if (note.id !== editMeId){
                 return note;
@@ -42,9 +47,15 @@ class App extends Component {
     };
 
     onSearch = (text) => {
+        /* toggle the doesMatchSearch boolean value of each sticky
+    note when the user types in the search field.
+    set the doesMatchSearch value to true for a sticky note if
+    it's title or description matches the search string. */
         const newSearchText = text.toLowerCase();
         const updatedNotes = this.state.notes.map(note=>{
             if(!newSearchText){
+           /* If the search field is empty, then
+      we set the doesMatchSearch value for every note to true. */
                 note.doesMatchSearch = true;
                 return note;
             } else {
@@ -61,6 +72,7 @@ class App extends Component {
     }
 
     removeNote = noteId => {
+            /* remove note by id of note that the user clicked on */
         const updatedNotes = this.state.notes.filter(note=> note.id !== noteId);
         this.setState({notes: updatedNotes});
     }
